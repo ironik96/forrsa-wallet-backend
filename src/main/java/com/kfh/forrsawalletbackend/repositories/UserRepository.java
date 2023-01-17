@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.kfh.forrsawalletbackend.entities.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
-    Optional<User> findByEmail(String email);
+    Optional<User> findByUsername(String username);
 }
