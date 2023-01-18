@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kfh.forrsawalletbackend.dto.AuthRequest;
 
 @Entity
 @Table(name = "users")
@@ -31,7 +32,13 @@ public class User {
     @JsonIgnore
     private List<BankAccount> bankAccounts;
 
-    // getters and setters
+    public static User fromAuth(AuthRequest request) {
+        User user = new User();
+        user.setUsername(request.getUsername());
+        user.setPassword(request.getPassword());
+        return user;
+    }
+
     public Long getId() {
         return id;
     }
