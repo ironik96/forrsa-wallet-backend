@@ -28,7 +28,7 @@ public class UserService {
         }
         User user = userRepository.save(User.fromAuth(request));
 
-        return new AuthResponse(user.getId(), user.getUsername());
+        return AuthResponse.fromUser(user);
     }
 
     public BankAccount createBankAccount(Long userId) {
@@ -50,6 +50,6 @@ public class UserService {
             throw new IllegalArgumentException("Invalid email or password");
         }
 
-        return new AuthResponse(user.getId(), user.getUsername());
+        return AuthResponse.fromUser(user);
     }
 }
